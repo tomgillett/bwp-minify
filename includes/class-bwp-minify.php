@@ -2628,6 +2628,7 @@ class BWP_MINIFY extends BWP_FRAMEWORK_IMPROVED
 	function process_media_source($src = '')
 	{
 		$src = trim($src);
+		$src = apply_filters('bwp_minify_pre_process_media_source', $src);
 
 		// handle possible scheme-less urls
 		if ('//' === substr($src, 0, 2))
@@ -2681,6 +2682,7 @@ class BWP_MINIFY extends BWP_FRAMEWORK_IMPROVED
 		$src = preg_replace('#[/]+#iu', '/', $src);
 		$src = ltrim($src, '/');
 
+		$src = apply_filters('bwp_minify_post_process_media_source', $src);
 		return $src;
 	}
 
